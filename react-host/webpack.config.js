@@ -41,11 +41,12 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "react_host",
+      // The file that we are reading
       filename: "remoteEntry.js",
       remotes: {
-        // remote: "remote@http://localhost:3000/remoteEntry.js",
-        // reactRemote: "reactRemote@http://localhost:3000/remoteEntry.js",
-        procedureBackoffice: "procedureBackoffice@http://localhost:3000/remoteEntry.js",
+        // The path to get the exposed file. reactRemote will be the package from which we import the components.
+        // The components are the ones exposed in the remote.
+        reactRemote: "reactRemote@http://localhost:3000/remoteEntry.js",
       },
       exposes: {},
       shared: {
